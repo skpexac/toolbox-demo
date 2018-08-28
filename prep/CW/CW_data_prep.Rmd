@@ -100,9 +100,9 @@ library(stringr)
 library(tools)
 
 ## Directories
-dir_prep = '~/github/toolbox-demo/prep' 
+dir_prep = 'C:/Folders/github/toolbox-demo/prep' 
 dir_cw   = file.path(dir_prep, 'CW')
-dir_layers = '~/github/toolbox-demo/region2016/layers'
+dir_layers = 'C:/Folders/github/toolbox-demo/region2017/layers'
 
 ```
 
@@ -221,7 +221,7 @@ mean_months_summer = mean_months %>%
 ggplot(mean_months_summer) + 
   geom_point(aes(year,mean_secchi)) +
   geom_line(aes(year,mean_secchi))+
-  facet_wrap(~bhi_id)+
+  facet_wrap(~rgn_id)+
   scale_y_continuous(limits = c(0,10))
 
 ```

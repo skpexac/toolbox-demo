@@ -37,6 +37,7 @@ library(here)
 library(ohicore)
 
 ## set the working directory to a filepath we all have
+getwd()
 setwd(here::here('region2017'))
 ```
 
@@ -66,6 +67,8 @@ Run this chunk to calculate and save scores as `scores` object and as `scores.cs
 ```{r calculate scores, eval=FALSE}
 ## calculate scenario scores
 scores <- ohicore::CalculateAll(conf, layers)
+
+#?CalculateAll
 
 ## save scores as scores.csv
 readr::write_csv(scores, 'scores.csv', na='')
