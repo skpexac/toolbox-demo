@@ -381,10 +381,16 @@ AO <- function(layers) {
     select(-layer_name) %>%
     left_join(r, by = c("region_id", "scenario_year"))
 
+  #head(ry)
+  #summary(ry)
+
   # model
   ry <- ry %>%
     mutate(Du = (1 - need) * (1 - access)) %>%
     mutate(status = (1 - Du) * Sustainability)
+
+  #head(ry)
+  #summary(ry)
 
   # status
   r.status <- ry %>%
@@ -394,12 +400,14 @@ AO <- function(layers) {
     select(region_id, score = status) %>%
     mutate(dimension = 'status')
 
+  #head(r.status)
+  #summary(r.status)
+
   # trend
 
   trend_years <- (scen_year - 4):(scen_year)
 
   r.trend <- CalculateTrend(status_data = ry, trend_years = trend_years)
-
 
   # return scores
   scores <- rbind(r.status, r.trend) %>%
